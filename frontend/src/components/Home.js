@@ -21,7 +21,14 @@ import Footer from "./Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { Backdrop, Paper, TextField } from "@mui/material";
-import { Close } from "@mui/icons-material";
+import {
+  Close,
+  Favorite,
+  HealthAndSafety,
+  ListAlt,
+  ManageSearch,
+  Settings,
+} from "@mui/icons-material";
 import CheckDetails from "./CheckDetails";
 import HomeBannerImg from "../images/homeBanner.png";
 import ReviewBannerImg from "../images/reviewImg.jpg";
@@ -34,18 +41,36 @@ const ResponsiveAppBar = () => {
       title: "Simple Setup",
       description:
         "You can create an account and start a project or fund projects in just few mins of creation.",
+      icon: (
+        <Settings
+          color='success'
+          style={{ marginTop: "2px", marginRight: "8px" }}
+        />
+      ),
     },
     {
       id: "2",
       title: "Transparency",
       description:
         "The entire process is transparent and no one can tamper the datas.",
+      icon: (
+        <ListAlt
+          color='success'
+          style={{ marginTop: "2px", marginRight: "8px" }}
+        />
+      ),
     },
     {
       id: "3",
       title: "Trust",
       description:
         "Smart contract code handles logic and no middleman is there.",
+      icon: (
+        <Favorite
+          color='success'
+          style={{ marginTop: "2px", marginRight: "8px" }}
+        />
+      ),
     },
   ];
   const servicesData2 = [
@@ -54,18 +79,36 @@ const ResponsiveAppBar = () => {
       title: "Secure",
       description:
         "Our app is built on top of blockchain, so there is no way to loss your funds.",
+      icon: (
+        <HealthAndSafety
+          color='success'
+          style={{ marginTop: "2px", marginRight: "8px" }}
+        />
+      ),
     },
     {
       id: "2",
       title: "WorldWide usage",
       description:
         "Our app is used all over the world for its trust, transparency and security",
+      icon: (
+        <PublicIcon
+          color='success'
+          style={{ marginTop: "2px", marginRight: "8px" }}
+        />
+      ),
     },
     {
       id: "3",
       title: "Trackage of funds",
       description:
         "Each and every transaction is recorded for the easy trackage for users.",
+      icon: (
+        <ManageSearch
+          color='success'
+          style={{ marginTop: "2px", marginRight: "8px" }}
+        />
+      ),
     },
   ];
 
@@ -101,6 +144,7 @@ const ResponsiveAppBar = () => {
               key={i.id}
               title={i.title}
               description={i.description}
+              icon={i.icon}
             />
           ))}
         </div>
@@ -110,6 +154,7 @@ const ResponsiveAppBar = () => {
               key={i.id}
               title={i.title}
               description={i.description}
+              icon={i.icon}
             />
           ))}
         </div>

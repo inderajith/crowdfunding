@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { api_call, SUCCESS_CODE } from "./api";
 import Project from "../contracts/Project.json";
+import Renzin from "../contracts/RenzinToken.json";
 import Web3 from "web3";
 export const UserContext = React.createContext();
 
@@ -14,6 +15,7 @@ export default ({ children }) => {
   const [selectedAccount, setSelectedAccount] = useState("");
   const [userDetails, setUserDetails] = useState({});
   const [projectDetails, setProjectDetails] = useState({});
+  const [tokenAddress, setTokenAddress] = useState("");
   const [projectMainContract, setProjectMainContract] = useState({});
   const [projectContract, setProjectContract] = useState({});
 
@@ -74,10 +76,25 @@ export default ({ children }) => {
   };
 
   const fundProjectContract = async (fund, projectId) => {
-    let res1 = await projectContract.methods
-      .contribute()
-      .send({ from: selectedAccount, value: web3.utils.toWei(fund, "ether") });
+    let res1 = await projectMainContract.methods.renzinTokenAddress().call();
     console.log("res1: ", res1);
+    const renzonContract = new web3.eth.Contract(Renzin.abi, res1);
+
+    let res2 = await renzonContract.methods
+      .transfer(projectContract?._address, fund * 10 ** 2)
+      .send({ from: selectedAccount });
+    console.log("res2: ", res2);
+    // let res3 = await renzonContract.methods
+    //   .balanceOf(projectContract?._address)
+    //   .call();
+    // console.log("res3: ", res3 / 10 ** 2);
+    // let res4 = await projectContract.methods
+    //   .contribute(fund)
+    //   .send({
+    //     from: selectedAccount,
+    //     value: web3.utils.toWei(String(fund), "ether"),
+    //   });
+    // console.log("res4: ", res4);
     let details = {
       address: userDetails.address,
       name: userDetails.name,

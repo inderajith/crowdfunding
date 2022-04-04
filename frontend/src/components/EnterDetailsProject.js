@@ -18,8 +18,8 @@ function EnterDetailsProject() {
     title: "Weather Forecasting Alarm",
     tagline:
       "A devices which detects and gives alarm before a natural disaster gonna happen.",
-    amount: "10",
-    minimumContribution: "1",
+    amount: 100,
+    minimumContribution: 5,
     startDate: new Date().toISOString(),
     endDate: new Date().toISOString(),
     about:
@@ -28,15 +28,15 @@ function EnterDetailsProject() {
     imageGallery: "",
     videoLink: "https://youtu.be/fdErsR8_NaU",
     otherLink: "https://www.accuweather.com/en/press/57827706",
-    raisedAmount: "0",
-    remainingAmount: "0",
+    raisedAmount: 0,
+    remainingAmount: 0,
     userId: selectedAccount,
     investors: [],
     requests: [],
   });
 
-  const onChange = (inputKey, e) => {
-    setInputValues((prev) => ({ ...prev, [inputKey]: e.target.value }));
+  const onChange = (inputKey, value) => {
+    setInputValues((prev) => ({ ...prev, [inputKey]: value }));
   };
 
   const onFileChange = (inputKey, event) => {
@@ -84,7 +84,7 @@ function EnterDetailsProject() {
             variant='outlined'
             fullWidth
             value={inputValues.title}
-            onChange={(e) => onChange("title", e)}
+            onChange={(e) => onChange("title", e.target.value)}
           />
         </div>
         <div style={{ marginBottom: "30px" }}>
@@ -97,7 +97,7 @@ function EnterDetailsProject() {
             variant='outlined'
             fullWidth
             value={inputValues.tagline}
-            onChange={(e) => onChange("tagline", e)}
+            onChange={(e) => onChange("tagline", e.target.value)}
           />
         </div>
         <div
@@ -117,7 +117,7 @@ function EnterDetailsProject() {
               variant='outlined'
               fullWidth
               value={inputValues.amount}
-              onChange={(e) => onChange("amount", e)}
+              onChange={(e) => onChange("amount", Number(e.target.value))}
               sx={{ width: 180 }}
             />
           </div>
@@ -131,7 +131,9 @@ function EnterDetailsProject() {
               variant='outlined'
               fullWidth
               value={inputValues.minimumContribution}
-              onChange={(e) => onChange("minimumContribution", e)}
+              onChange={(e) =>
+                onChange("minimumContribution", Number(e.target.value))
+              }
               sx={{ width: 320 }}
             />
           </div>
@@ -167,7 +169,7 @@ function EnterDetailsProject() {
             variant='outlined'
             fullWidth
             value={inputValues.about}
-            onChange={(e) => onChange("about", e)}
+            onChange={(e) => onChange("about", e.target.value)}
             multiline
             minRows={10}
           />
@@ -194,7 +196,7 @@ function EnterDetailsProject() {
             variant='outlined'
             fullWidth
             value={inputValues.videoLink}
-            onChange={(e) => onChange("videoLink", e)}
+            onChange={(e) => onChange("videoLink", e.target.value)}
           />
         </div>
         <div style={{ marginBottom: "30px" }}>
@@ -207,7 +209,7 @@ function EnterDetailsProject() {
             variant='outlined'
             fullWidth
             value={inputValues.otherLink}
-            onChange={(e) => onChange("otherLink", e)}
+            onChange={(e) => onChange("otherLink", e.target.value)}
           />
         </div>
         <Button

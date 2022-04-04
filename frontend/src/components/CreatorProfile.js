@@ -67,10 +67,10 @@ function CreatorProfile() {
               {investorsCount} Investors
             </Typography>
             <Typography variant='subtitle1' color='gray'>
-              Target {amount}
+              Target {amount} RZN
             </Typography>
             <Typography variant='subtitle1' color='gray'>
-              Raised Amount {raisedAmount}
+              Raised Amount {raisedAmount} RZN
             </Typography>
           </div>
         </div>

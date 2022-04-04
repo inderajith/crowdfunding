@@ -46,7 +46,7 @@ function InvestorProfile(props) {
               width: "7%",
               marginLeft: "10px",
             }}>
-            <Typography variant='h4'>{investedAmount}</Typography>
+            <Typography variant='h4'>{investedAmount} RZN</Typography>
           </div>
         </div>
       </div>

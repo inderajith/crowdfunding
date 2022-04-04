@@ -6,14 +6,11 @@ import Typography from "@mui/material/Typography";
 import { color1 } from "./colors";
 
 function ServicesCard(props) {
-  const { title, description } = props;
+  const { title, description, icon } = props;
 
   return (
     <div className='serviceCardContainer'>
-      <PublicIcon
-        color='success'
-        style={{ marginTop: "2px", marginRight: "8px" }}
-      />
+      {icon}
       <div>
         <Typography variant='h6'>{title}</Typography>
         <div>

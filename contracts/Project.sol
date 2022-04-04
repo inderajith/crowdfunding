@@ -1,13 +1,19 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
-
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "./RenzinToken.sol";
 
 contract ProjectMain{
     address[] public deployedProjects;    
+
+    address public renzinTokenAddress;    
+
+    constructor (address _renzinTokenAddress) {
+        renzinTokenAddress = _renzinTokenAddress;
+    }
     
     function createProject(uint minimum) public {
-        address newProject = address(new Project(minimum,msg.sender));
-        
+        address newProject = address(new Project(minimum,msg.sender, renzinTokenAddress));        
         deployedProjects.push(newProject);
     }
     
@@ -33,18 +39,18 @@ contract Project{
     }
     
     uint numRequests;
-    mapping (uint => Request) public requests;
-    
+    mapping (uint => Request) public requests;    
+    address private rznTokenAddress;
     // Request[] public requests;
     address public manager;
     uint public minimumContribution;
     mapping(address => bool) public approvers;
     uint public approversCount = 0;
-    
-    
-    constructor(uint minimum, address creator){
+        
+    constructor(uint minimum, address creator, address renzinTokenAddress){
         manager = creator;
         minimumContribution = minimum;
+        rznTokenAddress = renzinTokenAddress;
     }
     
     modifier restricted(){
@@ -52,11 +58,13 @@ contract Project{
         _;
     }
     
-    function contribute() public payable{
-        require(msg.value > minimumContribution);
+    function contribute(uint _amount) public{
+        // require(_amount > minimumContribution);
+        RenzinToken rt = RenzinToken(rznTokenAddress);
+        rt.transfer(address(this), _amount); 
         approvers[msg.sender] = true;
         approversCount++;
-    }
+    }    
     
     function createRequest(string memory description, uint value, address recipient) public restricted{
         // Request memory newRequest = Request({

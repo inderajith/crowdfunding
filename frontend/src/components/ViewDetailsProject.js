@@ -41,7 +41,7 @@ function ViewDetailsProject() {
   console.log("projectDetails: ", projectDetails);
   const [openBackdrop, setOpenBackdrop] = useState(false);
   const [backdropDetails, setBackdropDetails] = useState({
-    amount: projectDetails?.minimumContribution || "0",
+    amount: projectDetails?.minimumContribution || 0,
   });
 
   const handleToggleBackdrop = () => {
@@ -117,10 +117,10 @@ function ViewDetailsProject() {
               marginBottom: "10px",
             }}>
             <Typography variant='h6'>
-              ${projectDetails?.raisedAmount}
+              RZN {projectDetails?.raisedAmount}
             </Typography>
             <Typography variant='subtitle1' color='gray' ml={1}>
-              raised of ${projectDetails?.amount}
+              raised of RZN {projectDetails?.amount}
             </Typography>
           </div>
           <LinearProgress
@@ -189,7 +189,7 @@ function ViewDetailsProject() {
                   style={{ display: "flex", justifyContent: "space-between" }}>
                   <Typography variant='h6'>{i.name}</Typography>
                   <Typography variant='subtitle1' color='gray'>
-                    ${i.amount}
+                    RZN{i.amount}
                   </Typography>
                 </div>
                 <div className='line'></div>
@@ -215,7 +215,7 @@ function ViewDetailsProject() {
             onClick={handleToggleBackdrop}
           />
           <Typography variant='subtitle1' color='gray'>
-            Minimum Contribution ${projectDetails?.minimumContribution}
+            Minimum Contribution RZN{projectDetails?.minimumContribution}
           </Typography>
           <TextField
             id='amount'
@@ -223,7 +223,7 @@ function ViewDetailsProject() {
             variant='outlined'
             sx={{ my: 2 }}
             value={backdropDetails?.amount}
-            onChange={(e) => onChange("amount", e.target.value)}
+            onChange={(e) => onChange("amount", Number(e.target.value))}
           />
           <Button
             variant='contained'

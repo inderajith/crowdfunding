@@ -28,10 +28,10 @@ function CreatorRequest(props) {
       Math.floor(Math.random() * 10000 + 1) + new Date().toISOString()
     ),
     description: "This is the exmaple spending request message",
-    amount: "2",
+    amount: 2,
     recipient: "0x0Acbd51D560D1bD1d53Fe2e2506db23d5F209bEc",
     completed: false,
-    approvalCount: "0",
+    approvalCount: 0,
     approvals: [],
   });
 
@@ -81,7 +81,7 @@ function CreatorRequest(props) {
         </Typography>
         <Typography variant='subtitle1'>{description}</Typography>
         <Typography variant='subtitle1' color='gray'>
-          Spending Amount : {amount}
+          Spending Amount : {amount} RZN
         </Typography>
         <Typography variant='subtitle1' color='gray'>
           Total Approvals : {approvalCount}
@@ -180,7 +180,7 @@ function CreatorRequest(props) {
             variant='outlined'
             sx={{ my: 2, mb: 4 }}
             value={backdropDetails?.amount}
-            onChange={(e) => onChange("amount", e.target.value)}
+            onChange={(e) => onChange("amount", Number(e.target.value))}
           />
           <Button
             variant='contained'

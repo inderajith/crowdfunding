@@ -4,10 +4,10 @@ const projectSchema = new mongoose.Schema({
   userId: String,
   title: String,
   tagline: String,
-  amount: String,
-  minimumContribution: String,
-  raisedAmount: String,
-  remainingAmount: String,
+  amount: Number,
+  minimumContribution: Number,
+  raisedAmount: Number,
+  remainingAmount: Number,
   startDate: String,
   endDate: String,
   about: String,
@@ -15,15 +15,15 @@ const projectSchema = new mongoose.Schema({
   imageGallery: String,
   videoLink: String,
   otherLink: String,
-  investors: [{ address: String, name: String, amount: String }],
+  investors: [{ address: String, name: String, amount: Number }],
   requests: [
     {
       id: String,
       description: String,
-      amount: String,
+      amount: Number,
       recipient: String,
       completed: Boolean,
-      approvalCount: String,
+      approvalCount: Number,
       approvals: [
         {
           address: String,

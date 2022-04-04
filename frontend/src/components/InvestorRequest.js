@@ -52,7 +52,7 @@ function InvestorRequest(props) {
             </Typography>
             <Typography variant='subtitle1'>{description}</Typography>
             <Typography variant='subtitle1' color='gray'>
-              Spending Amount : {amount}
+              Spending Amount : {amount} RZN
             </Typography>
             <Typography variant='subtitle1' color='gray'>
               Total Approvals : {approvalCount}

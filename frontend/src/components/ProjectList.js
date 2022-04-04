@@ -72,14 +72,14 @@ export default function ProjectList() {
                 alignItems: "center",
               }}>
               <Typography variant='h6' component='h6'>
-                ${raisedAmount}
+                RZN {raisedAmount}
               </Typography>
               <Typography
                 variant='subtitle1'
                 component='p'
                 ml={1}
                 color='text.secondary'>
-                of ${amount}
+                of RZN {amount}
               </Typography>
             </div>
           </CardContent>
