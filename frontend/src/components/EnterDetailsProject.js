@@ -15,11 +15,11 @@ function EnterDetailsProject() {
   const { postProjectDetails, selectedAccount, setSnackbarDetails } =
     useContext(UserContext);
   const [inputValues, setInputValues] = useState({
-    title: "Weather Forecasting Alarm",
+    title: "Children's library",
     tagline:
-      "A devices which detects and gives alarm before a natural disaster gonna happen.",
-    amount: 100,
-    minimumContribution: 5,
+      "To improve the education of local children around the place.",
+    amount: 800,
+    minimumContribution: 15,
     startDate: new Date().toISOString(),
     endDate: new Date().toISOString(),
     about:

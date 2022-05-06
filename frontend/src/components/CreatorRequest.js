@@ -27,8 +27,8 @@ function CreatorRequest(props) {
     id: String(
       Math.floor(Math.random() * 10000 + 1) + new Date().toISOString()
     ),
-    description: "This is the exmaple spending request message",
-    amount: 2,
+    description: "sensory hardware equipments.",
+    amount: 10,
     recipient: "0x0Acbd51D560D1bD1d53Fe2e2506db23d5F209bEc",
     completed: false,
     approvalCount: 0,
